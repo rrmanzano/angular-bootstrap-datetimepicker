@@ -1,0 +1,6 @@
+/**
+ * angular-bootstrap-datetimepicker - v0.1
+ * A simple wrapper for eonasdan-bootstrap-datetimepicker by @Eonasdan. This directive allows you to use a datetimepicker on bootstrap-datetimepicker plugin.
+ * https://github.com/rrmanzano/angular-bootstrap-datetimepicker
+ * License: MIT http://opensource.org/licenses/MIT
+ **/

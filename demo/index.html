@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css" />
+  <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body ng-app="app">
+  <div ng-controller="exampleController as ctrl">
+    <div class="container">
+        <h1>Angular-bootstrap-datetimepicker (AngularJs directive)</h1>
+        <h3>A simple wrapper for "eonasdan-bootstrap-datetimepicker" by @Eonasdan.</h3>
+        <div class="margin-bottom-1em">
+          This directive allows you to use a datetimepicker on bootstrap-datetimepicker plugin.
+          <a href="https://github.com/rrmanzano/angular-bootstrap-datetimepicker">GitHub @rrmanzano</a>
+        </div>
+        <div class="margin-bottom-1em">
+          <a href="https://github.com/Eonasdan/bootstrap-datetimepicker/">Oficial bootstrap-datetimepicker page</a>
+        </div>
+
+        <!-- Basic -->
+        <div class="panel panel-default">
+          <div class="panel-heading">Basic</div>
+          <div class="panel-body ng-cloak">
+              <div class="col-xs-3">
+                <input
+                  type="text"
+                  class="form-control" 
+                  ng-model="datetimepickerValue"
+                  datetimepicker 
+                  datetimepicker-options="{viewMode:'days', format:'l'}"/>
+              </div>
+            <br/>
+            <br/>
+            <div class="col-xs-6">
+              <span class="label label-success">ng-model</span>
+              <span> {{ datetimepickerValue }} </span>
+            </div>
+            <div class="col-xs-12">
+              <figure class="highlight">
+                <code class="language-markup">
+                  &lt;input
+                  type="text"
+                  class="form-control" 
+                  ng-model="datetimepickerValue"
+                  datetimepicker 
+                  datetimepicker-options="{viewMode:'days', format:'l'}" /&gt;
+                  </code>
+              </figure>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Set value programmatically -->
+        <div class="panel panel-default">
+          <div class="panel-heading">Set value programmatically</div>
+          <div class="panel-body ng-cloak">
+              <div class="col-xs-3">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control" 
+                    ng-model="datetimepickerValueProgrammatically"
+                    datetimepicker 
+                    datetimepicker-options="{viewMode:'days', format:'l'}"/>
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default" ng-click="submit()">Set value</button>
+                  </span>
+                </div>
+              </div>
+            <br/>
+            <br/>
+            <div class="col-xs-6">
+              <span class="label label-success">ng-model</span>
+              <span> {{ datetimepickerValueProgrammatically }} </span>
+            </div>
+            <div class="col-xs-12">
+              <figure class="highlight">
+                  <code class="language-markup">
+                    &lt;input
+                    type="text"
+                    class="form-control" 
+                    ng-model="datetimepickerValueProgrammatically"
+                    datetimepicker 
+                    datetimepicker-options="{viewMode:'days', format:'l'}" /&gt;
+                  </code>
+              </figure>
+              <figure class="highlight">
+                  <code class="language-javascript">
+                    $scope.submit = function() {
+                      $scope.datetimepickerValueProgrammatically = '09/20/2017';
+                    };
+                  </code>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Clear value programmatically -->
+        <div class="panel panel-default">
+          <div class="panel-heading">Clear value programmatically</div>
+          <div class="panel-body ng-cloak">
+              <div class="col-xs-3">
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control" 
+                    ng-model="datetimepickerValueClear"
+                    datetimepicker 
+                    datetimepicker-options="{viewMode:'days', format:'l'}"/>
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default" ng-click="clear()">Clear value</button>
+                  </span>
+                </div>
+              </div>
+            <br/>
+            <br/>
+            <div class="col-xs-6">
+              <span class="label label-success">ng-model</span>
+              <span> {{ datetimepickerValueClear }} </span>
+            </div>
+            <div class="col-xs-12">
+              <figure class="highlight">
+                  <code class="language-markup">
+                    &lt;input
+                    type="text"
+                    class="form-control" 
+                    ng-model="datetimepickerValueClear"
+                    datetimepicker 
+                    datetimepicker-options="{viewMode:'days', format:'l'}" /&gt;
+                  </code>
+              </figure>
+              <figure class="highlight">
+                  <code class="language-javascript">
+                    $scope.clear = function() {
+                      delete $scope.datetimepickerValueClear; // Or $scope.datetimepickerValueClear = null;
+                    };
+                  </code>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Events -->
+        <div class="panel panel-default">
+          <div class="panel-heading">Events</div>
+          <div class="panel-body ng-cloak">
+              <div class="col-xs-3">
+                <input
+                  type="text"
+                  class="form-control" 
+                  ng-model="datetimepickerValueEvent"
+                  datetimepicker 
+                  datetimepicker-options="{viewMode:'days', format:'l'}"
+                  datetimepicker-events="{'dp.change':'onChangeEvent'}"/>
+              </div>
+            <br/>
+            <br/>
+            <div class="col-xs-6">
+              <span class="label label-success">ng-model</span>
+              <span> {{ datetimepickerValueEvent }} </span>
+            </div>
+            <div class="col-xs-12">
+              <figure class="highlight">
+                  <code class="language-markup">
+                    &lt;input
+                    type="text"
+                    class="form-control" 
+                    ng-model="datetimepickerValueEvent"
+                    datetimepicker 
+                    datetimepicker-options="{viewMode:'days', format:'l'}"
+                    datetimepicker-events="{'dp.change':'onChangeEvent'}" /&gt;
+                  </code>
+              </figure>
+              <figure class="highlight">
+                  <code class="language-javascript">
+                    $scope.onChangeEvent = function(arg) {
+                      console.log("onChange event !!!", arg);
+                    };
+                  </code>
+              </figure>
+            </div>
+          </div>
+        </div>
+
+        <!-- Default Moment -->
+        <div class="panel panel-default">
+          <div class="panel-heading">Default date (Moment)</div>
+          <div class="panel-body ng-cloak">
+              <div class="col-xs-3">
+                <input
+                  type="text"
+                  class="form-control" 
+                  ng-model="datetimepickerMomentValue"
+                  datetimepicker 
+                  datetimepicker-options="{viewMode:'days', format:'l', defaultDate: moment()}"/>
+              </div>
+            <br/>
+            <br/>
+            <div class="col-xs-6">
+              <span class="label label-success">ng-model</span>
+              <span> {{ datetimepickerMomentValue }} </span>
+            </div>
+            <div class="col-xs-12">
+              <figure class="highlight">
+                <code class="language-markup">
+                  &lt;input
+                  type="text"
+                  class="form-control" 
+                  ng-model="datetimepickerMomentValue"
+                  datetimepicker 
+                  datetimepicker-options="{viewMode:'days', format:'l', defaultDate: moment()}" /&gt;
+                  </code>
+              </figure>
+            </div>
+
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+  <script src="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js"></script>
+  <script src="../dist/bootstrap.datetimepicker.angular.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
+
