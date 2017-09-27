@@ -15,7 +15,7 @@ This directive allows you to use a datetimepicker on bootstrap-datetimepicker pl
 
 ## Examples and Demo
 
-[Demo](http://htmlpreview.github.io/?https://github.com/rrmanzano/angular-bootstrap-datetimepicker/blob/v1dev/demo/index.html)
+[Demo](http://htmlpreview.github.io/?https://github.com/rrmanzano/angular-bootstrap-datetimepicker/v1dev/demo/index.html)
 
 ### Installation
 
