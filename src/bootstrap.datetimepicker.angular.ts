@@ -71,7 +71,8 @@ module AngularBootstrapDatetimepickerPlugin
                 // The result can be accessed through the `m`-variable.
                 m.filter(x => x && x.indexOf(':') > -1).forEach((match, groupIndex) => {
                     var value = match.split(':');
-                    obj[value[0]] = new Function("return " + value[1])();
+                    var method = value.filter((e, idx) => idx > 0).join("");
+                    obj[value[0]] = new Function("return " + method)();
                 });
             }
         }

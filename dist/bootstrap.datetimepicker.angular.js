@@ -86,7 +86,8 @@ var AngularBootstrapDatetimepickerPlugin;
                 }
                 m.filter(function (x) { return x && x.indexOf(':') > -1; }).forEach(function (match, groupIndex) {
                     var value = match.split(':');
-                    obj[value[0]] = new Function("return " + value[1])();
+                    var method = value.filter(function (e, idx) { return idx > 0; }).join("");
+                    obj[value[0]] = new Function("return " + method)();
                 });
             }
         };
