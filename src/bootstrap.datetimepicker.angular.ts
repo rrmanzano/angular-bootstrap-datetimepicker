@@ -22,7 +22,14 @@ module AngularBootstrapDatetimepickerPlugin
             var options = {} as any;
             if ($scope.options){
                 this.parseMethods($attrs.datetimepickerOptions, $scope.options);
-                angular.copy($scope.options, options);
+                options = $scope.options;
+                $scope.$watch(() => { 
+                    return ngModel.$modelValue
+                },(newValue, oldValue) => {
+                    if (!angular.equals(newValue, oldValue) && !newValue){
+                        element.data("DateTimePicker").clear()
+                    }
+                }, true);
             }
 
             var mapEvents = function(){
