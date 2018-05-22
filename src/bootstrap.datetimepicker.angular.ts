@@ -24,7 +24,7 @@ module AngularBootstrapDatetimepickerPlugin
                 this.parseMethods($attrs.datetimepickerOptions, $scope.options);
                 options = $scope.options;
                 $scope.$watch(() => { 
-                    return ngModel.$modelValue
+                    return ngModel ? ngModel.$modelValue : null;
                 },(newValue, oldValue) => {
                     if (!angular.equals(newValue, oldValue) && !newValue){
                         element.data("DateTimePicker").clear()

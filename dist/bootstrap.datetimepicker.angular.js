@@ -1,5 +1,5 @@
 /**
- * angular-bootstrap-datetimepicker - v0.2
+ * angular-bootstrap-datetimepicker - v0.3
  * A simple wrapper for eonasdan-bootstrap-datetimepicker by @Eonasdan. This directive allows you to use a datetimepicker on bootstrap-datetimepicker plugin.
  * https://github.com/rrmanzano/angular-bootstrap-datetimepicker
  * License: MIT http://opensource.org/licenses/MIT
@@ -51,7 +51,7 @@ var AngularBootstrapDatetimepickerPlugin;
                     _this.parseMethods($attrs.datetimepickerOptions, $scope.options);
                     options = $scope.options;
                     $scope.$watch(function () {
-                        return ngModel.$modelValue;
+                        return ngModel ? ngModel.$modelValue : null;
                     }, function (newValue, oldValue) {
                         if (!angular.equals(newValue, oldValue) && !newValue) {
                             element.data("DateTimePicker").clear();
