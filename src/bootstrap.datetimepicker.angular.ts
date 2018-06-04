@@ -19,51 +19,49 @@ module AngularBootstrapDatetimepickerPlugin
             $attrs: IAttributesBootstrapDatetimepickerDirective,
             ngModel?: ng.INgModelController) => {
 
-            var options = {} as any;
-            if ($scope.options){
-                this.parseMethods($attrs.datetimepickerOptions, $scope.options);
-                options = $scope.options;
-                $scope.$watch(() => { 
-                    return ngModel ? ngModel.$modelValue : null;
-                },(newValue, oldValue) => {
-                    if (!angular.equals(newValue, oldValue) && !newValue){
-                        element.data("DateTimePicker").clear()
-                    }
-                }, true);
-            }
+                var options = {} as any;
+                if ($scope.options){
+                    this.parseMethods($attrs.datetimepickerOptions, $scope.options);
+                    options = $scope.options;
+                    $scope.$watch(() => { 
+                        return ngModel ? ngModel.$modelValue : null;
+                    },(newValue, oldValue) => {
+                        if (!angular.equals(newValue, oldValue) && !newValue){
+                            element.data("DateTimePicker").clear()
+                        }
+                    }, true);
+                }
 
-            var mapEvents = function(){
-              if ($attrs.datetimepickerEvents){
-                var events = $scope.$eval($attrs.datetimepickerEvents);
-                for (var prop in events) {
-                    if (events[prop]) {
-                        var event = new AngularBootstrapDatetimepickerPluginUtils.EventHandler($scope);
-                        event.propertyName = events[prop];
-                        element.on(prop,  event.action);
+                var mapEvents = function(){
+                if ($attrs.datetimepickerEvents){
+                    var events = $scope.$eval($attrs.datetimepickerEvents);
+                    for (var prop in events) {
+                        if (events[prop]) {
+                            var event = new AngularBootstrapDatetimepickerPluginUtils.EventHandler($scope);
+                            event.propertyName = events[prop];
+                            element.on(prop,  event.action);
+                        }
                     }
                 }
-              }
-            };
+                };
 
-            // Change View value
-            element.on('dp.change', (e: any) => {
-              if (ngModel && e.target.value) {
-                this.$timeout(() => {
-                  ngModel.$setViewValue(e.target.value);
-                });
-              }
-            }).datetimepicker(options);
+                // Change View value
+                element.on('dp.change', (e: any) => {
+                if (ngModel && e.target.value) {
+                    this.$timeout(() => {
+                    ngModel.$setViewValue(e.target.value);
+                    });
+                }
+                }).datetimepicker(options);
 
 
-            var date = options.defaultDate || null;
-            if (date){
-                ngModel.$setViewValue(date);
-            }
+                var date = options.defaultDate || null;
+                if (date){
+                    ngModel.$setViewValue(date);
+                }
 
-            mapEvents();
+                mapEvents();
         }
-
-
 
         public parseMethods(json:string, obj: any): void{
             const regex = /("?)\b(\w+)\1\s*:\s*("?)((?:\w+[-+*%])*?\w+)\b\3\((.*?)\)/gm;
